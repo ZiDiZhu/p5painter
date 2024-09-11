@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
   <title>P5Painter</title>
 
@@ -21,11 +21,23 @@
   <script src="js/UI.js"></script>
   <script src="js/paint.js"></script>
   <script src="js/script.js"></script>
+  <style>
+    body {
+      touch-action: none;
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+  </style>
 
 </head>
 
 <body>
   <!-- HTML would go here if needed. -->
+  <script>
+    document.addEventListener('touchmove', function(event) {
+      event.preventDefault(); /* Prevent all default touch actions */
+    }, { passive: false });
+  </script>
 </body>
 
 </html>
