@@ -1,3 +1,23 @@
+let resetText = {
+    x: 650,
+    y: 40,
+}
+let finishText = {
+    x: 800,
+    y:40,
+}
+
+let toolbarItems = [
+    { x: 50, y: 20, size: 80, label: "pen" },
+    { x: 150, y: 20, size: 80, label: "fan" },
+    { x: 250, y: 20, size: 80, label: "fill" },
+];
+
+
+
+let amazingX = 130;
+let amazingY = 0;
+
 
 function displayUI(){
 
@@ -12,17 +32,22 @@ function displayUI(){
     push();
     fill(brush.r,brush.g,brush.b);
     ellipse(brush1.x,brush1.y,brush.size);
+
+    drawToolbar();
+
     pop();
-
-    //color pickers
-    fill(255,0,0);
-    ellipse(red.x, red.y, red.size);
-
-    fill(0,255,0);
-    ellipse(green.x, green.y, green.size);
-
-    fill(0,0,255);
-    ellipse(blue.x, blue.y, blue.size);
+}
 
 
+function drawToolbar() {
+    for (let item of toolbarItems) {
+        fill(200);  // Default fill for squares
+        stroke(0);
+        rect(item.x, item.y, item.size, item.size);  // Draw square
+
+        fill(0);
+        textSize(16);
+        textAlign(CENTER, CENTER);
+        text(item.label, item.x + item.size / 2, item.y + item.size / 2);  // Draw label
+    }
 }

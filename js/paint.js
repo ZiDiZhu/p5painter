@@ -1,13 +1,34 @@
-function paint(){
+let fanCenterX;
+let fanCenterY;
+let centerdefined;
+
+function paint(mode){
     //paint
-    if(canPaint()){
-        push();
-        strokeWeight(brush.size);
-        stroke(brush.r,brush.g,brush.b);
-        line(pmouseX, pmouseY, mouseX, mouseY);
-        pop();
+    push();
+    stroke(brush.r,brush.g,brush.b);
+    fill(brush.r,brush.g,brush.b);
+    if(mode==='pen'){
+        if(canPaint()){
+            strokeWeight(brush.size);
+
+            line(pmouseX, pmouseY, mouseX, mouseY);
+        }
+    }else if(mode==='fan'){
+        if(canPaint()&&centerdefined===true){
+            strokeWeight(2);
+            line(pmouseX, pmouseY,mouseX,mouseY);
+            line(fanCenterX, fanCenterY, mouseX, mouseY);
+        }
     }
+    else if(mode==='fill'){
+        if(canPaint()&&centerdefined===true){
+            strokeWeight(2);
+            triangle(pmouseX, pmouseY,fanCenterX, fanCenterY, mouseX,mouseY);
+        }
+    }
+    pop();
 }
+
 
 function canPaint(){
     return (mouseIsPressed &&
@@ -15,3 +36,4 @@ function canPaint(){
         dist(mouseX,mouseY,resetText.x,resetText.y)>60 &&
         inDrawingArea);
 }
+
