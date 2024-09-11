@@ -112,7 +112,7 @@ function mousePressed(){
     }
   }
 
-  
+
 }
 
 function keyPressed(){
@@ -129,4 +129,9 @@ function keyPressed(){
 
 function mouseReleased(){
   centerdefined = false;
+}
+
+function touchStarted() {
+  // Handle touch input similarly to mousePressed
+  mousePressed();  // Call the same function for consistency
 }
