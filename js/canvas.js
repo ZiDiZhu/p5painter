@@ -24,12 +24,7 @@ let drawingArea = {
     drawingArea.y3 = height * 4 / 5;
     drawingArea.x4 = width * 3 / 4;
     drawingArea.y4 = 80;
-  
-    // Update position of the help text and mixing guide
-    helpText.x = width * 7 / 8;
-    mixingGuideText.x = width * 7 / 8;
-    mixingGuideText.y = height / 2;
-  
+
     // Draw the drawing area
     push();
     strokeWeight(6);
@@ -48,5 +43,16 @@ let drawingArea = {
     amazingX = 130;
     amazingY = 0;
     timer = 7;
+  }
+
+  function checkIfInCanvas(){
+      //checks if in draw area
+      let posX = mouseX;
+      let posY = mouseY;
+      if(posX>drawingArea.x1&&posY>drawingArea.y1&&posX<drawingArea.x3&&posY<drawingArea.y3){
+          inDrawingArea = true;
+      }else{
+          inDrawingArea =false;
+      }
   }
   

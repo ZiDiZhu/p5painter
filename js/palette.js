@@ -17,7 +17,7 @@ let colorSwatches = [
   function displayColorSwatches() {
     for (let i = 0; i < colorSwatches.length; i++) {
       let x = width / 2 + (i % 5) * (swatchSize + 10); // Positioning horizontally
-      let y = height - 100 + Math.floor(i / 5) * (swatchSize + 10); // Positioning vertically
+      let y = height - 150 + Math.floor(i / 5) * (swatchSize + 10); // Positioning vertically
   
       fill(colorSwatches[i].r, colorSwatches[i].g, colorSwatches[i].b);
       rect(x, y, swatchSize, swatchSize);
