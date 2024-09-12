@@ -16,13 +16,13 @@ let drawingArea = {
     background(bg);  // Reset background
   
     // Define the drawing area based on the current window size
-    drawingArea.x1 = 150;
+    drawingArea.x1 = 0;
     drawingArea.y1 = 80;
-    drawingArea.x2 = 150;
+    drawingArea.x2 = 0;
     drawingArea.y2 = height * 4 / 5;
-    drawingArea.x3 = width * 3 / 4;
+    drawingArea.x3 = width;
     drawingArea.y3 = height * 4 / 5;
-    drawingArea.x4 = width * 3 / 4;
+    drawingArea.x4 = width;
     drawingArea.y4 = 80;
 
     // Draw the drawing area
