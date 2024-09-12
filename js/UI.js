@@ -11,6 +11,7 @@ let toolbarItems = [
     { x: 50, y: 20, size: 80, label: "pen" },
     { x: 150, y: 20, size: 80, label: "fan" },
     { x: 250, y: 20, size: 80, label: "fill" },
+    { x: 350, y: 20, size: 80, label: "line" },
 ];
 
 

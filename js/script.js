@@ -97,10 +97,23 @@ function mousePressed(){
   }
 
   if (mode==='fan'||mode==='fill'){
-    if(inDrawingArea){
+    if(inDrawingArea&&centerdefined===false){
+
       fanCenterX = mouseX;
       fanCenterY = mouseY;
       centerdefined = true;
+    }
+  }
+
+  if(mode==='line'){
+    if(inDrawingArea&&linePointDefined===false){
+      push();
+      strokeWeight(brush.size);
+      line(mouseX,mouseY,mouseX,mouseY);
+      pop();
+      linePointX = mouseX;
+      linePointY = mouseY;
+      linePointDefined = true;
     }
   }
 
@@ -112,6 +125,7 @@ function mousePressed(){
     }
   }
 
+  console.log(linePointX,linePointY);
 
 }
 
@@ -128,7 +142,8 @@ function keyPressed(){
 }
 
 function mouseReleased(){
-  centerdefined = false;
+  if(mode==='fill'||mode==='fan')centerdefined = false;
+  if(mode==='line'&&linePointDefined===true) toDrawLine = true;
 }
 
 function touchStarted() {

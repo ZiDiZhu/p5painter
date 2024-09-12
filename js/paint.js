@@ -1,6 +1,10 @@
 let fanCenterX;
 let fanCenterY;
 let centerdefined;
+let linePointX;
+let linePointY;
+let linePointDefined = false;
+let toDrawLine = false;
 
 function paint(mode){
     //paint
@@ -24,6 +28,14 @@ function paint(mode){
         if(canPaint()&&centerdefined===true){
             strokeWeight(2);
             triangle(pmouseX, pmouseY,fanCenterX, fanCenterY, mouseX,mouseY);
+        }
+    }
+    else if(mode==='line'){
+        if(canPaint()&&linePointDefined===true&&toDrawLine===true){
+            strokeWeight(brush.size);
+            line(linePointX, linePointY,mouseX,mouseY);
+            linePointDefined = false;
+            toDrawLine=false;
         }
     }
     pop();
