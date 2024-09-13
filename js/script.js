@@ -8,7 +8,6 @@ let titleimg;
 let showingInstruction = false;
 
 let state = `game`;//game ,end
-let mode = 'fill'; //fan, fill, etc
 let timer = 7;
 
 let bg = 0;
@@ -36,7 +35,8 @@ function draw() {
   if (state === `game`){
     displayUI();
     displayColorSwatches();
-    paint(mode);
+    checkToolSelection();
+    paint(tool);
   }
 
   checkIfInCanvas();
@@ -45,6 +45,7 @@ function draw() {
   if(state === `end`){
     displayEnding();
   }
+
 
 }
 
@@ -96,7 +97,7 @@ function mousePressed(){
     state = `end`;
   }
 
-  if (mode==='fan'||mode==='fill'){
+  if (tool==='fan'||tool==='fill'){
     if(inDrawingArea&&centerdefined===false){
 
       fanCenterX = mouseX;
@@ -105,7 +106,7 @@ function mousePressed(){
     }
   }
 
-  if(mode==='line'){
+  if(tool==='line'){
     if(inDrawingArea&&linePointDefined===false){
       push();
       strokeWeight(brush.size);
@@ -117,15 +118,7 @@ function mousePressed(){
     }
   }
 
-  for (let item of toolbarItems) {
-    let dX = mouseX - item.x;
-    let dY = mouseY - item.y;
-    if (dX > 0 && dX < item.size && dY > 0 && dY < item.size) {
-      mode = item.label;  // Change mode to the clicked item label
-    }
-  }
-
-  console.log(linePointX,linePointY);
+  if(highlightedTool!=='')tool = highlightedTool;
 
 }
 
@@ -142,8 +135,9 @@ function keyPressed(){
 }
 
 function mouseReleased(){
-  if(mode==='fill'||mode==='fan')centerdefined = false;
-  if(mode==='line'&&linePointDefined===true) toDrawLine = true;
+  if(tool==='fill'||tool==='fan')centerdefined = false;
+  if(tool==='line'&&linePointDefined===true) toDrawLine = true;
+
 }
 
 function touchStarted() {

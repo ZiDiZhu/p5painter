@@ -6,6 +6,8 @@ let linePointY;
 let linePointDefined = false;
 let toDrawLine = false;
 
+let tool = 'fill'; //fan, fill, etc
+
 function paint(mode){
     //paint
     push();
@@ -48,4 +50,6 @@ function canPaint(){
         dist(mouseX,mouseY,resetText.x,resetText.y)>60 &&
         inDrawingArea);
 }
+
+
 
