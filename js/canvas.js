@@ -15,15 +15,7 @@ let drawingArea = {
     showingInstruction = false;
     background(bg);  // Reset background
   
-    // Define the drawing area based on the current window size
-    drawingArea.x1 = 0;
-    drawingArea.y1 = 80;
-    drawingArea.x2 = 0;
-    drawingArea.y2 = height * 4 / 5;
-    drawingArea.x3 = width;
-    drawingArea.y3 = height * 4 / 5;
-    drawingArea.x4 = width;
-    drawingArea.y4 = 80;
+    defineDrawingArea();
 
     // Draw the drawing area
     push();
@@ -37,8 +29,7 @@ let drawingArea = {
       drawingArea.x4, drawingArea.y4
     );
     pop();
-  
-  
+
     // Reset amazing text position and timer
     amazingX = 130;
     amazingY = 0;
@@ -54,5 +45,16 @@ let drawingArea = {
       }else{
           inDrawingArea =false;
       }
+  }
+
+  function defineDrawingArea(){
+      drawingArea.x1 = 0;
+      drawingArea.y1 = 50;
+      drawingArea.x2 = 0;
+      drawingArea.y2 = height -100;
+      drawingArea.x3 = width;
+      drawingArea.y3 = height -100;
+      drawingArea.x4 = width;
+      drawingArea.y4 = 50;
   }
   

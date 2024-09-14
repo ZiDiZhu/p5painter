@@ -16,7 +16,9 @@ let toolbarItems = [
     { x: 50, y: 0, size: 50, label: "fan" },
     { x: 100, y: 0, size: 50, label: "fill" },
     { x: 150, y: 0, size: 50, label: "line" },
-    { x: 200, y: 0, size: 50, label: "save" },
+    { x: 250, y: 0, size: 50, label: "save" },
+    { x: 300, y: 0, size: 50, label: "reset" },
+    { x: 350, y: 0, size: 50, label: "finish" },
 ];
 
 let amazingX = 130;
@@ -25,13 +27,6 @@ let highlightedTool = '';
 
 
 function displayUI(){
-
-    //displaying reset, brush text
-    fill(255,150,150);
-    textSize(32);
-    text(`reset`,resetText.x, resetText.y);
-    text(`FINISH`,finishText.x,finishText.y);
-
 
     //current color/choose brush size
     push();

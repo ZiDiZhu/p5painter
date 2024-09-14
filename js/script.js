@@ -45,15 +45,7 @@ function draw() {
 
 
 function displayIntro(){
-  background(0);
 
-  imageMode(CENTER);
-
-  fill(255,150,150);
-  textSize(24);
-  textAlign(CENTER);
-  text(`CLICK anywhere to start`, width/2 , height*4/5);
-  text(`a slightly infuriating painting sim \n NOT for mobile \n fullscreen is recommended`,width/2, height/2+80);
 }
 
 
@@ -80,15 +72,6 @@ function displayEnding(){
 
 function mousePressed(){
 
-  let dReset = dist(mouseX,mouseY,resetText.x,resetText.y);
-  if(dReset < 60){
-    resetCanvas();
-    state = `game`;
-  }
-  let dFinish = dist(mouseX,mouseY,finishText.x,finishText.y);
-  if(dFinish < 60){
-    state = `end`;
-  }
 
   if (tool==='fan'||tool==='fill'){
     if(inDrawingArea&&centerdefined===false){
@@ -111,7 +94,12 @@ function mousePressed(){
     }
   }
 
-  if(highlightedTool!==''&&highlightedTool!=='save')tool = highlightedTool;
+  if(highlightedTool!==''
+      &&highlightedTool!=='save'
+      &&highlightedTool!=='reset'
+      &&highlightedTool!=='finish'){
+    tool = highlightedTool;
+  }
 
 }
 
@@ -132,10 +120,18 @@ function mouseReleased(){
   if(tool==='line'&&linePointDefined===true) toDrawLine = true;
   if(highlightedTool==='save'){
     saveCanvas();
+  }else if(highlightedTool==='reset'){
+    resetCanvas();
+  }else if(highlightedTool==='finish'){
+    state = 'end';
   }
 }
 
 function touchStarted() {
   // Handle touch input similarly to mousePressed
   mousePressed();  // Call the same function for consistency
+}
+
+function windowResized(){
+  //resetCanvas();
 }
