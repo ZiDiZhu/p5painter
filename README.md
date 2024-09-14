@@ -1,3 +1,3 @@
-# Pain-Tor
+#P5.Paint
 
-This is a game about mixing color in RGB mode and filling colors in a painting.
+A browser-based painting app developed using the p5.js library by Zi Di Zhu.
