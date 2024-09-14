@@ -7,12 +7,24 @@ let linePointDefined = false;
 let toDrawLine = false;
 
 let tool = 'fill'; //fan, fill, etc
+let blendmode='blend';
 
 function paint(mode){
     //paint
     push();
     stroke(brush.r,brush.g,brush.b);
     fill(brush.r,brush.g,brush.b);
+
+    switch(blendmode){
+        case 'blend':
+            blendMode(BLEND);
+            break;
+        case 'add':
+            blendMode(ADD);
+            break;
+    }
+
+
     if(mode==='pen'){
         if(canPaint()){
             strokeWeight(brush.size);

@@ -13,9 +13,10 @@ let brush1 = {
 }
 let toolbarItems = [
     { x: 0, y: 0, size:50, label: "pen" },
-    { x: 100, y: 0, size: 50, label: "fan" },
-    { x: 200, y: 0, size: 50, label: "fill" },
-    { x: 300, y: 0, size: 50, label: "line" },
+    { x: 50, y: 0, size: 50, label: "fan" },
+    { x: 100, y: 0, size: 50, label: "fill" },
+    { x: 150, y: 0, size: 50, label: "line" },
+    { x: 200, y: 0, size: 50, label: "save" },
 ];
 
 let amazingX = 130;

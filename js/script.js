@@ -1,9 +1,4 @@
-
 "use strict"
-
-
-let titleimg;
-
 
 let showingInstruction = false;
 
@@ -46,7 +41,6 @@ function draw() {
     displayEnding();
   }
 
-
 }
 
 
@@ -54,7 +48,6 @@ function displayIntro(){
   background(0);
 
   imageMode(CENTER);
-  image(titleimg,width/2,height/4,300,400);
 
   fill(255,150,150);
   textSize(24);
@@ -118,7 +111,7 @@ function mousePressed(){
     }
   }
 
-  if(highlightedTool!=='')tool = highlightedTool;
+  if(highlightedTool!==''&&highlightedTool!=='save')tool = highlightedTool;
 
 }
 
@@ -137,7 +130,9 @@ function keyPressed(){
 function mouseReleased(){
   if(tool==='fill'||tool==='fan')centerdefined = false;
   if(tool==='line'&&linePointDefined===true) toDrawLine = true;
-
+  if(highlightedTool==='save'){
+    saveCanvas();
+  }
 }
 
 function touchStarted() {
