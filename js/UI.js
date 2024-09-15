@@ -1,14 +1,7 @@
-let resetText = {
-    x: 650,
-    y: 40,
-}
-let finishText = {
-    x: 800,
-    y:40,
-}
-let brush1 = {
-    x:80,
-    y:440,
+
+let brushPreview = {
+    x:0,
+    y:0,
     size:10,
 }
 let toolbarItems = [
@@ -21,33 +14,45 @@ let toolbarItems = [
     { x: 350, y: 0, size: 50, label: "finish" },
 ];
 
-let amazingX = 130;
+let blendModeItems = [
+    { x: 0, y: 50, size:50, label: "blend" },
+    { x: 50, y: 50, size: 50, label: "add" },
+    { x: 100, y: 50, size: 50, label: "mult" },
+    { x: 150, y: 50, size: 50, label: "diff" },
+    { x: 200, y: 50, size: 50, label: "screen" },
+];
+
 let amazingY = 0;
 let highlightedTool = '';
+let highlightedBlendMode = '';
 
+let defaultUIValue = 200;
+let hightlightUIValue = 155;
+let selectedUIValue = 255;
 
 function displayUI(){
+
+    brushPreview.x = width - 50;
+    brushPreview.y = height - 50;
 
     //current color/choose brush size
     push();
     fill(brush.r,brush.g,brush.b);
-    ellipse(brush1.x,brush1.y,brush.size);
+    ellipse(brushPreview.x,brushPreview.y,brush.size);
     drawToolbar();
+    drawBlendModeItems();
     pop();
 }
 
-
 function drawToolbar() {
     for (let item of toolbarItems) {
-        fill(200);  // Default fill for squares
         stroke(0);
         if(highlightedTool===item.label){
-            fill(155,0,155);
+            fill(hightlightUIValue);
         }else if(tool===item.label){
-            fill(155,255,155);
-        }
-        else{
-            fill(255);
+            fill(selectedUIValue);
+        }else{
+            fill(defaultUIValue);
         }
         rect(item.x, item.y, item.size, item.size);  // Draw square
         textSize(16);
@@ -55,6 +60,23 @@ function drawToolbar() {
         text(item.label, item.x + item.size / 2, item.y + item.size / 2);  // Draw label
     }
 }
+
+function drawBlendModeItems(){
+    for (let item of blendModeItems) {
+        fill(200);  // Default fill for squares
+        stroke(0);
+        if(highlightedBlendMode===item.label){
+            fill(hightlightUIValue);
+        }else if (blendmode===item.label){
+            fill(selectedUIValue);
+        }else{
+            fill(defaultUIValue);
+        }
+        rect(item.x, item.y, item.size, item.size/2);
+        text(item.label, item.x + item.size / 2, item.y + item.size / 4);
+    }
+}
+
 
 function checkToolSelection(){
     for (let item of toolbarItems) {
@@ -65,6 +87,19 @@ function checkToolSelection(){
             return true;
         }else{
             highlightedTool = '';
+        }
+    }
+}
+
+function checkBlendModeSelection(){
+    for (let item of blendModeItems) {
+        let dX = mouseX - item.x;
+        let dY = mouseY - item.y;
+        if (dX > 0 && dX < item.size && dY > 0 && dY < item.size) {
+            highlightedBlendMode = item.label;
+            return true;
+        }else{
+            highlightedBlendMode = '';
         }
     }
 }

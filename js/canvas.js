@@ -9,6 +9,8 @@ let drawingArea = {
     x4: 0,
     y4: 0
   };
+
+let inDrawingArea = false;
   
   function resetCanvas() {
     clear();
@@ -20,7 +22,6 @@ let drawingArea = {
     // Draw the drawing area
     push();
     strokeWeight(6);
-    stroke(100);
     fill(60);
     quad(
       drawingArea.x1, drawingArea.y1, 
@@ -30,9 +31,6 @@ let drawingArea = {
     );
     pop();
 
-    // Reset amazing text position and timer
-    amazingX = 130;
-    amazingY = 0;
     timer = 7;
   }
 
@@ -49,12 +47,12 @@ let drawingArea = {
 
   function defineDrawingArea(){
       drawingArea.x1 = 0;
-      drawingArea.y1 = 50;
+      drawingArea.y1 = 75;
       drawingArea.x2 = 0;
       drawingArea.y2 = height -100;
       drawingArea.x3 = width;
       drawingArea.y3 = height -100;
       drawingArea.x4 = width;
-      drawingArea.y4 = 50;
+      drawingArea.y4 = 75;
   }
   

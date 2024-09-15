@@ -9,58 +9,82 @@ let toDrawLine = false;
 let tool = 'fill'; //fan, fill, etc
 let blendmode='blend';
 
-function paint(mode){
-    //paint
+function paint(mode) {
+    // Prepare for painting
     push();
-    stroke(brush.r,brush.g,brush.b);
-    fill(brush.r,brush.g,brush.b);
+    stroke(brush.r, brush.g, brush.b);
+    fill(brush.r, brush.g, brush.b);
 
-    switch(blendmode){
+    checkblendMode(blendmode);
+
+    if (!canPaint()) {
+        pop();
+        return; // Exit if we can't paint
+    }
+
+    switch (mode) {
+        case 'pen':
+            strokeWeight(brush.size);
+            line(pmouseX, pmouseY, mouseX, mouseY);
+            break;
+
+        case 'fan':
+            if (centerdefined) {
+                strokeWeight(2);
+                line(pmouseX, pmouseY, mouseX, mouseY);
+                line(fanCenterX, fanCenterY, mouseX, mouseY);
+            }
+            break;
+
+        case 'fill':
+            if (centerdefined) {
+                strokeWeight(2);
+                triangle(pmouseX, pmouseY, fanCenterX, fanCenterY, mouseX, mouseY);
+            }
+            break;
+
+        case 'line':
+            if (linePointDefined && toDrawLine) {
+                strokeWeight(brush.size);
+                line(linePointX, linePointY, mouseX, mouseY);
+                linePointDefined = false;  // Reset linePoint
+                toDrawLine = false;        // Reset line draw flag
+            }
+            break;
+
+        default:
+            break;
+    }
+
+    pop();
+}
+
+function checkblendMode(blendmode) {
+    // Set blend mode based on the current blendmode
+    switch (blendmode) {
         case 'blend':
             blendMode(BLEND);
             break;
         case 'add':
             blendMode(ADD);
             break;
+        case 'mult':
+            blendMode(MULTIPLY);
+            break;
+        case 'diff':
+            blendMode(EXCLUSION);
+            break;
+        case 'screen':
+            blendMode(SCREEN);
+            break;
+        default:
+            blendMode(BLEND); // Default to blend if no valid mode is specified
+            break;
     }
-
-
-    if(mode==='pen'){
-        if(canPaint()){
-            strokeWeight(brush.size);
-
-            line(pmouseX, pmouseY, mouseX, mouseY);
-        }
-    }else if(mode==='fan'){
-        if(canPaint()&&centerdefined===true){
-            strokeWeight(2);
-            line(pmouseX, pmouseY,mouseX,mouseY);
-            line(fanCenterX, fanCenterY, mouseX, mouseY);
-        }
-    }
-    else if(mode==='fill'){
-        if(canPaint()&&centerdefined===true){
-            strokeWeight(2);
-            triangle(pmouseX, pmouseY,fanCenterX, fanCenterY, mouseX,mouseY);
-        }
-    }
-    else if(mode==='line'){
-        if(canPaint()&&linePointDefined===true&&toDrawLine===true){
-            strokeWeight(brush.size);
-            line(linePointX, linePointY,mouseX,mouseY);
-            linePointDefined = false;
-            toDrawLine=false;
-        }
-    }
-    pop();
 }
 
-
 function canPaint(){
-    return (mouseIsPressed &&
-        state ===`game` &&
-        dist(mouseX,mouseY,resetText.x,resetText.y)>60 &&
-        inDrawingArea);
+    return (mouseIsPressed && state ===`game` &&inDrawingArea);
 }
 
 
