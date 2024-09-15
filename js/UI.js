@@ -36,10 +36,10 @@ let hightlightUIValue = 155;
 let selectedUIValue = 255;
 
 function preload(){
-    fanToolIcon = loadImage('/assets/images/fan_x32.png');
-    fillToolIcon = loadImage('/assets/images/fill_x32.png');
-    lineToolIcon = loadImage('/assets/images/line_x32.png');
-    penToolIcon = loadImage('/assets/images/pen_x32.png');
+    fanToolIcon = loadImage("./assets/images/fan_x32.png");
+    fillToolIcon = loadImage("./assets/images/fill_x32.png");
+    lineToolIcon = loadImage("./assets/images/line_x32.png");
+    penToolIcon = loadImage("./assets/images/pen_x32.png");
 }
 
 
