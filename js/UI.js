@@ -1,17 +1,22 @@
-
 let brushPreview = {
     x:0,
     y:0,
     size:10,
 }
+
+//tool icons
+let fanToolIcon;
+let fillToolIcon;
+let lineToolIcon;
+let penToolIcon;
+
 let toolbarItems = [
-    { x: 0, y: 0, size:50, label: "pen" },
-    { x: 50, y: 0, size: 50, label: "fan" },
-    { x: 100, y: 0, size: 50, label: "fill" },
-    { x: 150, y: 0, size: 50, label: "line" },
-    { x: 250, y: 0, size: 50, label: "save" },
-    { x: 300, y: 0, size: 50, label: "reset" },
-    { x: 350, y: 0, size: 50, label: "finish" },
+    { x: 0, y: 0, size:50, label: "pen" ,icon:penToolIcon},
+    { x: 50, y: 0, size: 50, label: "fan" ,icon:fanToolIcon},
+    { x: 100, y: 0, size: 50, label: "fill",icon:fillToolIcon},
+    { x: 150, y: 0, size: 50, label: "line",icon:lineToolIcon},
+    { x: 250, y: 0, size: 50, label: "save" ,icon:lineToolIcon},
+    { x: 300, y: 0, size: 50, label: "reset" ,icon:lineToolIcon}
 ];
 
 let blendModeItems = [
@@ -30,6 +35,14 @@ let defaultUIValue = 200;
 let hightlightUIValue = 155;
 let selectedUIValue = 255;
 
+function preload(){
+    fanToolIcon = loadImage('/assets/images/fan_x32.png');
+    fillToolIcon = loadImage('/assets/images/fill_x32.png');
+    lineToolIcon = loadImage('/assets/images/line_x32.png');
+    penToolIcon = loadImage('/assets/images/pen_x32.png');
+}
+
+
 function displayUI(){
 
     brushPreview.x = width - 50;
@@ -41,6 +54,7 @@ function displayUI(){
     ellipse(brushPreview.x,brushPreview.y,brush.size);
     drawToolbar();
     drawBlendModeItems();
+    //displayTitle();
     pop();
 }
 
@@ -55,6 +69,7 @@ function drawToolbar() {
             fill(defaultUIValue);
         }
         rect(item.x, item.y, item.size, item.size);  // Draw square
+        //image(fanToolIcon,item.x, item.y);
         textSize(16);
         textAlign(CENTER, CENTER);
         text(item.label, item.x + item.size / 2, item.y + item.size / 2);  // Draw label
@@ -102,4 +117,16 @@ function checkBlendModeSelection(){
             highlightedBlendMode = '';
         }
     }
+}
+
+function displayTitle(){
+    push();
+    textAlign(RIGHT);
+    textSize(25);
+    text("p5.paint",width-5,height - 80);
+    textSize(12);
+    text("developed by",width-35,height - 55);
+    stroke(155,100,155);
+    text("Zi Di",width-5,height - 55);
+    pop();
 }

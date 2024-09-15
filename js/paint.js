@@ -5,7 +5,6 @@ let linePointX;
 let linePointY;
 let linePointDefined = false;
 let toDrawLine = false;
-
 let tool = 'fill'; //fan, fill, etc
 let blendmode='blend';
 
@@ -86,6 +85,3 @@ function checkblendMode(blendmode) {
 function canPaint(){
     return (mouseIsPressed && state ===`game` &&inDrawingArea);
 }
-
-
-

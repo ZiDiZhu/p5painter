@@ -8,10 +8,6 @@ let timer = 7;
 let bg = 0;
 
 
-function preload(){
-
-}
-
 function setup() {
 
   createCanvas(windowWidth,windowHeight);
@@ -34,15 +30,10 @@ function draw() {
     checkBlendModeSelection();
     paint(tool);
   }
-
   checkIfInCanvas();
-
-
   if(state === `end`){
     displayEnding();
   }
-
-
 }
 
 
@@ -74,21 +65,8 @@ function displayEnding(){
 
 function mousePressed(){
 
-  switch (highlightedTool) {
-    case 'save':
-      saveCanvas();
-      break;
-    case 'reset':
-      resetCanvas();
-      break;
-    case 'finish':
-      state = 'end';
-      break;
-    default:
-      if (highlightedTool !== '') {
-        tool = highlightedTool;
-      }
-      break;
+  if (highlightedTool !== ''&&highlightedTool!=='save'&&highlightedTool!=='reset') {
+    tool = highlightedTool;
   }
 
   if(highlightedBlendMode!=='')blendmode = highlightedBlendMode;
@@ -142,9 +120,6 @@ function mouseReleased(){
     case 'reset':
       resetCanvas();
       break;
-    case 'finish':
-      state = 'end';
-      break;
   }
 
   if (tool === 'fill' || tool === 'fan') {
@@ -159,7 +134,38 @@ function mouseReleased(){
 
 function touchStarted() {
   // Handle touch input similarly to mousePressed
-  mousePressed();  // Call the same function for consistency
+  if(highlightedBlendMode!=='')blendmode = highlightedBlendMode;
+  if (highlightedTool !== ''&&highlightedTool!=='save'&&highlightedTool!=='reset') {
+    tool = highlightedTool;
+  }
+
+  let touch ={x:0,y:0};
+  for (let point of touches){
+    touch.x = point.x;
+    touch.y = point.y;
+  }
+
+  switch(tool) {
+    case 'fan':
+    case 'fill':
+      if(inDrawingArea ) {
+        fanCenterX = touch.x;
+        fanCenterY = touch.y;
+        centerdefined = true;
+      }
+      break;
+    case 'line':
+      if(inDrawingArea && linePointDefined ===false){
+        push();
+        strokeWeight(brush.size);
+        line(touch.x,touch.y,touch.x,touch.y); //placeholder point
+        pop();
+        linePointX = touch.x;
+        linePointY = touch.y;
+        linePointDefined = true;
+      }
+      break;
+  }
 }
 
 function windowResized(){
