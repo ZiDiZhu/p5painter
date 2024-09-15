@@ -11,12 +11,12 @@ let lineToolIcon;
 let penToolIcon;
 
 let toolbarItems = [
-    { x: 0, y: 0, size:50, label: "pen" ,icon:penToolIcon},
-    { x: 50, y: 0, size: 50, label: "fan" ,icon:fanToolIcon},
-    { x: 100, y: 0, size: 50, label: "fill",icon:fillToolIcon},
-    { x: 150, y: 0, size: 50, label: "line",icon:lineToolIcon},
-    { x: 250, y: 0, size: 50, label: "save" ,icon:lineToolIcon},
-    { x: 300, y: 0, size: 50, label: "reset" ,icon:lineToolIcon}
+    { x: 0, y: 0, size:50, label: "pen"},
+    { x: 50, y: 0, size: 50, label: "fan" },
+    { x: 100, y: 0, size: 50, label: "fill"},
+    { x: 150, y: 0, size: 50, label: "line"},
+    { x: 250, y: 0, size: 50, label: "save"},
+    { x: 300, y: 0, size: 50, label: "reset" }
 ];
 
 let blendModeItems = [
@@ -36,10 +36,10 @@ let hightlightUIValue = 155;
 let selectedUIValue = 255;
 
 function preload(){
-    fanToolIcon = loadImage("./assets/images/fan_x32.png");
-    fillToolIcon = loadImage("./assets/images/fill_x32.png");
-    lineToolIcon = loadImage("./assets/images/line_x32.png");
-    penToolIcon = loadImage("./assets/images/pen_x32.png");
+    // fanToolIcon = loadImage("./assets/images/fan_x32.png");
+    // fillToolIcon = loadImage("./assets/images/fill_x32.png");
+    // lineToolIcon = loadImage("./assets/images/line_x32.png");
+    // penToolIcon = loadImage("./assets/images/pen_x32.png");
 }
 
 
