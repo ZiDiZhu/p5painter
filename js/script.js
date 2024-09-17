@@ -26,6 +26,7 @@ function draw() {
   if (state === `game`){
     displayUI();
     displayColorSwatches();
+    displayShadePalette();
     checkToolSelection();
     checkBlendModeSelection();
     paint(tool);
