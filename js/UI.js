@@ -4,26 +4,20 @@ let brushPreview = {
     size:10,
 }
 
-//tool icons
-let fanToolIcon;
-let fillToolIcon;
-let lineToolIcon;
-let penToolIcon;
-
 let toolbarItems = [
-    { x: 0, y: 0, size:50, label: "pen"},
-    { x: 50, y: 0, size: 50, label: "fan" },
-    { x: 100, y: 0, size: 50, label: "fill"},
-    { x: 150, y: 0, size: 50, label: "line"},
-    { x: 250, y: 0, size: 50, label: "save"},
-    { x: 300, y: 0, size: 50, label: "reset" }
+    { x: 0, y: 0, size:50, label: "pen",image:null, icon:"assets/images/pen_x32.png"},
+    { x: 50, y: 0, size: 50, label: "fan" ,image:null, icon:"assets/images/fan_x32.png"},
+    { x: 100, y: 0, size: 50, label: "fill",image:null, icon:"assets/images/fill_x32.png"},
+    { x: 150, y: 0, size: 50, label: "line",image:null, icon:"assets/images/line_x32.png"},
+    { x: 250, y: 0, size: 50, label: "save",image:null, icon:"assets/images/save_x32.png"},
+    { x: 300, y: 0, size: 50, label: "reset",image:null, icon:"assets/images/reset_x32.png" }
 ];
 
 let blendModeItems = [
-    { x: 0, y: 50, size:50, label: "blend" },
-    { x: 50, y: 50, size: 50, label: "add" },
+    { x: 0, y: 50, size:50, label: "blend"},
+    { x: 50, y: 50, size: 50, label: "add"},
     { x: 100, y: 50, size: 50, label: "mult" },
-    { x: 150, y: 50, size: 50, label: "diff" },
+    { x: 150, y: 50, size: 50, label: "diff"},
     { x: 200, y: 50, size: 50, label: "screen" },
 ];
 
@@ -36,10 +30,11 @@ let hightlightUIValue = 155;
 let selectedUIValue = 255;
 
 function preload(){
-    // fanToolIcon = loadImage("./assets/images/fan_x32.png");
-    // fillToolIcon = loadImage("./assets/images/fill_x32.png");
-    // lineToolIcon = loadImage("./assets/images/line_x32.png");
-    // penToolIcon = loadImage("./assets/images/pen_x32.png");
+    toolbarItems.forEach(item=>{
+        if(item.icon!=null){
+            item.image = loadImage(item.icon);
+        }
+    })
 }
 
 
@@ -69,10 +64,11 @@ function drawToolbar() {
             fill(defaultUIValue);
         }
         rect(item.x, item.y, item.size, item.size);  // Draw square
-        //image(fanToolIcon,item.x, item.y);
-        textSize(16);
         textAlign(CENTER, CENTER);
-        text(item.label, item.x + item.size / 2, item.y + item.size / 2);  // Draw label
+        if(item.image!=null) image(item.image,item.x + item.size / 4, item.y + item.size / 4);
+        textSize(16);
+
+        text(item.label, item.x + item.size / 2, item.y + item.size/4);  // Draw label
     }
 }
 
