@@ -7,11 +7,13 @@ let linePointDefined = false;
 let toDrawLine = false;
 let tool = 'fill'; //fan, fill, etc
 let blendmode='blend';
+let colormode = 'flat';
 
 function paint(mode) {
     // Prepare for painting
     push();
     stroke(brush.r, brush.g, brush.b);
+    if(colormode==='dynamic')randomizeBrushHue();
     fill(brush.r, brush.g, brush.b);
 
     checkblendMode(blendmode);

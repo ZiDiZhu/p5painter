@@ -21,9 +21,15 @@ let blendModeItems = [
     { x: 200, y: 50, size: 50, label: "screen" },
 ];
 
+let colorModeItems = [
+    { x: 0, y: 0, size:70, label: "flat"},
+    { x: 70, y: 0, size:70, label: "dynamic"},
+]
+
 let amazingY = 0;
 let highlightedTool = '';
 let highlightedBlendMode = '';
+let highlightedColorMode = '';
 
 let defaultUIValue = 200;
 let hightlightUIValue = 155;
@@ -49,6 +55,7 @@ function displayUI(){
     ellipse(brushPreview.x,brushPreview.y,brush.size);
     drawToolbar();
     drawBlendModeItems();
+    drawColorModeItems();
     //displayTitle();
     pop();
 }
@@ -88,6 +95,26 @@ function drawBlendModeItems(){
     }
 }
 
+function drawColorModeItems(){
+    for (let item of colorModeItems) {
+        fill(200);
+        stroke(0);
+        textAlign(CENTER, CENTER);
+        if(highlightedColorMode ===item.label){
+            fill(hightlightUIValue);
+        }else if (colormode===item.label){
+            fill(selectedUIValue);
+        }else {
+            fill(defaultUIValue);
+        }
+        let y = height - item.size/2;
+        item.y = y;
+        rect(item.x, item.y, item.size, item.size/2);
+        text(item.label, item.x+item.size/2, item.y+item.size/4);
+    }
+
+}
+
 
 function checkToolSelection(){
     for (let item of toolbarItems) {
@@ -111,6 +138,19 @@ function checkBlendModeSelection(){
             return true;
         }else{
             highlightedBlendMode = '';
+        }
+    }
+}
+
+function checkColorModeSelection(){
+    for (let item of colorModeItems){
+        let dX = mouseX - item.x;
+        let dY = mouseY - item.y;
+        if (dX > 0 && dX < item.size && dY > 0 && dY < item.size) {
+            highlightedColorMode = item.label;
+            return true;
+        }else{
+            highlightedColorMode = '';
         }
     }
 }

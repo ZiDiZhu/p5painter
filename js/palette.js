@@ -27,9 +27,10 @@ function displayColorSwatches() {
         // Check if the user clicks on the swatch
         if (mouseIsPressed && dist(mouseX, mouseY, x + swatchSize / 2, y + swatchSize / 2) < swatchSize / 2) {
             selectedColorIndex = i;  // Update current color
-            brush.r = colorSwatches[i].r;
-            brush.g = colorSwatches[i].g;
-            brush.b = colorSwatches[i].b;
+            changeBrushColor(colorSwatches[i]);
+            currentColor.r = colorSwatches[i].r;
+            currentColor.g = colorSwatches[i].g;
+            currentColor.b = colorSwatches[i].b;
 
             // Generate shades for the selected color
             shadeSwatches = generateShades(colorSwatches[i]);
@@ -39,7 +40,7 @@ function displayColorSwatches() {
 
 function displayShadePalette() {
     for (let i = 0; i < shadeSwatches.length; i++) {
-        let x = 200 + (i % 5) * swatchSize; // Positioning shades horizontally
+        let x = 160 + (i % 5) * swatchSize; // Positioning shades horizontally
         let y = height - 100 + Math.floor(i / 5) * swatchSize; // Positioning vertically
 
         fill(shadeSwatches[i].r, shadeSwatches[i].g, shadeSwatches[i].b);
@@ -47,9 +48,10 @@ function displayShadePalette() {
 
         // Check if the user clicks on the shade
         if (mouseIsPressed && dist(mouseX, mouseY, x + swatchSize / 2, y + swatchSize / 2) < swatchSize / 2) {
-            brush.r = shadeSwatches[i].r;
-            brush.g = shadeSwatches[i].g;
-            brush.b = shadeSwatches[i].b;
+            changeBrushColor(shadeSwatches[i]);
+            currentColor.r = shadeSwatches[i].r;
+            currentColor.g = shadeSwatches[i].g;
+            currentColor.b = shadeSwatches[i].b;
         }
     }
     console.log()

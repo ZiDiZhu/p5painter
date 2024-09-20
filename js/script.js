@@ -29,6 +29,7 @@ function draw() {
     displayShadePalette();
     checkToolSelection();
     checkBlendModeSelection();
+    checkColorModeSelection();
     paint(tool);
   }
   checkIfInCanvas();
@@ -71,6 +72,7 @@ function mousePressed(){
   }
 
   if(highlightedBlendMode!=='')blendmode = highlightedBlendMode;
+  if(highlightedColorMode!=='')colormode = highlightedColorMode;
 
   switch (tool) {
     case 'fan':
@@ -136,6 +138,7 @@ function mouseReleased(){
 function touchStarted() {
   // Handle touch input similarly to mousePressed
   if(highlightedBlendMode!=='')blendmode = highlightedBlendMode;
+  if(highlightedColorMode!=='')colormode = highlightedColorMode;
   if (highlightedTool !== ''&&highlightedTool!=='save'&&highlightedTool!=='reset') {
     tool = highlightedTool;
   }
