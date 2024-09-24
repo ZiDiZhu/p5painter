@@ -9,6 +9,7 @@ let toolbarItems = [
     { x: 50, y: 0, size: 50, label: "fan" ,image:null, icon:"assets/images/fan_x32.png"},
     { x: 100, y: 0, size: 50, label: "fill",image:null, icon:"assets/images/fill_x32.png"},
     { x: 150, y: 0, size: 50, label: "line",image:null, icon:"assets/images/line_x32.png"},
+    { x: 200, y: 0, size: 50, label: "picker", icon: "assets/images/colorpicker_x32.png" },
     { x: 250, y: 0, size: 50, label: "save",image:null, icon:"assets/images/save_x32.png"},
     { x: 300, y: 0, size: 50, label: "reset",image:null, icon:"assets/images/reset_x32.png" }
 ];

@@ -24,6 +24,7 @@ function draw() {
     }
   }
   if (state === `game`){
+    
     displayUI();
     displayColorSwatches();
     displayShadePalette();
@@ -36,11 +37,6 @@ function draw() {
   if(state === `end`){
     displayEnding();
   }
-}
-
-
-function displayIntro(){
-
 }
 
 
@@ -68,7 +64,9 @@ function displayEnding(){
 function mousePressed(){
 
   if (highlightedTool !== ''&&highlightedTool!=='save'&&highlightedTool!=='reset') {
+    previousTool = tool;
     tool = highlightedTool;
+    if(tool==='picker')pickerReady=false;
   }
 
   if(highlightedBlendMode!=='')blendmode = highlightedBlendMode;
@@ -94,6 +92,11 @@ function mousePressed(){
         linePointDefined = true;
       }
       break;
+    case"picker":
+      if(pickerReady)pickColor();
+      break;
+    default:
+      break;
   }
 
 }
@@ -118,7 +121,7 @@ function keyPressed(){
 function mouseReleased(){
   switch (highlightedTool) {
     case 'save':
-      saveCanvas();
+      saveimage();
       break;
     case 'reset':
       resetCanvas();
@@ -128,6 +131,9 @@ function mouseReleased(){
   if (tool === 'fill' || tool === 'fan') {
     centerdefined = false;
   }
+
+  if(tool==='picker'&&pickerReady===false)pickerReady = true;
+
 
   if (tool === 'line' && linePointDefined === true) {
     toDrawLine = true;

@@ -6,6 +6,7 @@ let linePointY;
 let linePointDefined = false;
 let toDrawLine = false;
 let tool = 'fill'; //fan, fill, etc
+let previousTool = '';
 let blendmode='blend';
 let colormode = 'flat';
 
