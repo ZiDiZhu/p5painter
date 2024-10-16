@@ -13,9 +13,10 @@ let colormode = 'flat';
 function paint(mode) {
     // Prepare for painting
     push();
-    stroke(brush.r, brush.g, brush.b);
-    if(colormode==='dynamic')randomizeBrushHue();
-    fill(brush.r, brush.g, brush.b);
+    if(colormode==='dynamic')dynamicColor();
+    if(colormode==='morph')morphColor();
+    stroke(currentColor.r, currentColor.g, currentColor.b);
+    fill(currentColor.r, currentColor.g, currentColor.b);
 
     checkblendMode(blendmode);
 

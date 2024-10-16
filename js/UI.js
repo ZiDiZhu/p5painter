@@ -25,6 +25,7 @@ let blendModeItems = [
 let colorModeItems = [
     { x: 0, y: 0, size:70, label: "flat"},
     { x: 70, y: 0, size:70, label: "dynamic"},
+    { x: 140, y: 0, size:70, label: "morph"},
 ]
 
 let amazingY = 0;

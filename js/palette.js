@@ -27,7 +27,7 @@ function displayColorSwatches() {
         // Check if the user clicks on the swatch
         if (mouseIsPressed && dist(mouseX, mouseY, x + swatchSize / 2, y + swatchSize / 2) < swatchSize / 2) {
             selectedColorIndex = i;  // Update current color
-            changeBrushColor(colorSwatches[i]);
+            setBaseColor(colorSwatches[i]);
             currentColor.r = colorSwatches[i].r;
             currentColor.g = colorSwatches[i].g;
             currentColor.b = colorSwatches[i].b;
@@ -48,7 +48,7 @@ function displayShadePalette() {
 
         // Check if the user clicks on the shade
         if (mouseIsPressed && dist(mouseX, mouseY, x + swatchSize / 2, y + swatchSize / 2) < swatchSize / 2) {
-            changeBrushColor(shadeSwatches[i]);
+            setBaseColor(shadeSwatches[i]);
             currentColor.r = shadeSwatches[i].r;
             currentColor.g = shadeSwatches[i].g;
             currentColor.b = shadeSwatches[i].b;

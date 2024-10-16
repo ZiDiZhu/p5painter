@@ -9,9 +9,12 @@ function saveimage(){
 }
 
 function pickColor(){
-    let pickedColor = get(mouseX, mouseY);
-    brush.r = pickedColor[0]; // Red
-    brush.g = pickedColor[1]; // Green
-    brush.b = pickedColor[2]; // Blue
+    let point = get(mouseX, mouseY);
+    let pickedColor = {
+        r:point[0],
+        g:point[1],
+        b:point[2]
+    }
+    setBaseColor(pickedColor);
     if(previousTool!=='')tool=previousTool;
 }
