@@ -57,7 +57,6 @@ function displayShadePalette() {
     console.log()
 }
 
-
 function generateShades(baseColor, numShades = 10, variationFactor = 3.5) {
     // Ensure numShades is at least 2 to have both lighter and darker shades
     numShades = Math.max(numShades, 2);
@@ -81,7 +80,6 @@ function generateShades(baseColor, numShades = 10, variationFactor = 3.5) {
 
         shades.push(newColor);
     }
-
     return shades;
 }
 

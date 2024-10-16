@@ -51,10 +51,10 @@ function displayUI(){
     brushPreview.x = width - 50;
     brushPreview.y = height - 50;
 
-    //current color/choose brush size
+    //current color/choose myColor size
     push();
-    fill(brush.r,brush.g,brush.b);
-    ellipse(brushPreview.x,brushPreview.y,brush.size);
+    fill(myColor.r,myColor.g,myColor.b);
+    ellipse(brushPreview.x,brushPreview.y,myColor.size);
     drawToolbar();
     drawBlendModeItems();
     drawColorModeItems();

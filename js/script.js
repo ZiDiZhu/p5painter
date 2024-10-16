@@ -84,7 +84,7 @@ function mousePressed(){
     case 'line':
       if (inDrawingArea && linePointDefined === false) {
         push();
-        strokeWeight(brush.size);
+        strokeWeight(myColor.size);
         line(mouseX, mouseY, mouseX, mouseY); // Placeholder point
         pop();
         linePointX = mouseX;
@@ -105,13 +105,13 @@ function keyPressed(){
 
   switch (keyCode){
     case 49: //1
-      brush.size = 5;
+      myColor.size = 5;
       break;
     case 50: //2
-      brush.size = 15;
+      myColor.size = 15;
       break;
     case 51: //3
-      brush.size = 30;
+      myColor.size = 30;
       break;
     default:
       break;
@@ -167,7 +167,7 @@ function touchStarted() {
     case 'line':
       if(inDrawingArea && linePointDefined ===false){
         push();
-        strokeWeight(brush.size);
+        strokeWeight(myColor.size);
         line(touch.x,touch.y,touch.x,touch.y); //placeholder point
         pop();
         linePointX = touch.x;

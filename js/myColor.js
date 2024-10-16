@@ -1,4 +1,4 @@
-let brush = {
+let myColor = {
     x:80,
     y:440,
     size:5
@@ -26,9 +26,6 @@ function dynamicColor(){
     currentColor.g = baseColor.g + random(-10,10);
     currentColor.b = baseColor.b + random(-10,10);
 }
-
-
-
 
 // color random variation always apply to the newest color
 function morphColor(){

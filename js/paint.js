@@ -5,8 +5,8 @@ let linePointX;
 let linePointY;
 let linePointDefined = false;
 let toDrawLine = false;
-let tool = 'fill'; //fan, fill, etc
 let previousTool = '';
+let tool = 'fill'; //fan, fill, etc
 let blendmode='blend';
 let colormode = 'flat';
 
@@ -27,7 +27,7 @@ function paint(mode) {
 
     switch (mode) {
         case 'pen':
-            strokeWeight(brush.size);
+            strokeWeight(myColor.size);
             line(pmouseX, pmouseY, mouseX, mouseY);
             break;
 
@@ -48,7 +48,7 @@ function paint(mode) {
 
         case 'line':
             if (linePointDefined && toDrawLine) {
-                strokeWeight(brush.size);
+                strokeWeight(myColor.size);
                 line(linePointX, linePointY, mouseX, mouseY);
                 linePointDefined = false;  // Reset linePoint
                 toDrawLine = false;        // Reset line draw flag
