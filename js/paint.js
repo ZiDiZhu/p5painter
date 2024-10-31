@@ -1,6 +1,6 @@
 let fanCenterX;
 let fanCenterY;
-let centerdefined;
+let centerdefined = false;
 let linePointX;
 let linePointY;
 let linePointDefined = false;

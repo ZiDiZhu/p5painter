@@ -98,7 +98,6 @@ function mousePressed(){
     default:
       break;
   }
-
 }
 
 function keyPressed(){
