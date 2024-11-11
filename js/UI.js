@@ -28,10 +28,16 @@ let colorModeItems = [
     { x: 140, y: 0, size:70, label: "morph"},
 ]
 
+let linkButtons = [
+    {x: 0, y: 0, size:70, label: "devlogs"},
+    {x: 70,y: 0, size:70, label: "my site"},
+]
+
 let amazingY = 0;
 let highlightedTool = '';
 let highlightedBlendMode = '';
 let highlightedColorMode = '';
+let highlightedLinkButton = '';
 
 let defaultUIValue = 200;
 let hightlightUIValue = 155;
@@ -43,6 +49,7 @@ function preload(){
             item.image = loadImage(item.icon);
         }
     })
+
 }
 
 
@@ -58,7 +65,8 @@ function displayUI(){
     drawToolbar();
     drawBlendModeItems();
     drawColorModeItems();
-    //displayTitle();
+    drawLinksButton();
+    displayTitle();
     pop();
 }
 
@@ -114,8 +122,19 @@ function drawColorModeItems(){
         rect(item.x, item.y, item.size, item.size/2);
         text(item.label, item.x+item.size/2, item.y+item.size/4);
     }
-
 }
+
+function drawLinksButton(){
+    for (let item of linkButtons) {
+        if(highlightedLinkButton==item.label)fill(250);
+        else fill(250,250,200);
+        stroke(0);
+        textAlign(CENTER, CENTER);
+        rect(item.x, item.y, item.size, item.size/3);
+        text(item.label, item.x+item.size/2, item.y+item.size/6);
+    }
+}
+
 
 
 function checkToolSelection(){
@@ -153,6 +172,19 @@ function checkColorModeSelection(){
             return true;
         }else{
             highlightedColorMode = '';
+        }
+    }
+}
+
+function checkLinkButtonClick(){
+    for (let item of linkButtons){
+        let dX = mouseX - item.x;
+        let dY = mouseY - item.y;
+        if (dX > 0 && dX < item.size && dY > 0 && dY < item.size) {
+            highlightedLinkButton = item.label;
+            return true;
+        }else{
+            highlightedLinkButton = '';
         }
     }
 }

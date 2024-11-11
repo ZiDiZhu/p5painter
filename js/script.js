@@ -13,6 +13,11 @@ function setup() {
   createCanvas(windowWidth,windowHeight);
   background(bg);
   resetCanvas();
+
+  for(let item of linkButtons){
+    item.x = width-item.x-item.size;
+    item.y = height-item.y-item.size/2;
+  }
 }
 
 
@@ -31,6 +36,7 @@ function draw() {
     checkToolSelection();
     checkBlendModeSelection();
     checkColorModeSelection();
+    checkLinkButtonClick();
     paint(tool);
   }
   checkIfInCanvas();
@@ -136,6 +142,17 @@ function mouseReleased(){
 
   if (tool === 'line' && linePointDefined === true) {
     toDrawLine = true;
+  }
+
+  if(highlightedLinkButton!==''){
+    if(highlightedLinkButton =="my site"){
+      window.open("https://zidizhu.github.io/portfolio/");
+    }else if(highlightedLinkButton=="devlogs"){
+      window.open("https://www.youtube.com/playlist?list=PLkwthIgQC5pDTT_K9XerveYqeFnnj_3Fu");
+    }else {
+      highlightedLinkButton='';
+    }
+    highlightedLinkButton='';
   }
 
 }
